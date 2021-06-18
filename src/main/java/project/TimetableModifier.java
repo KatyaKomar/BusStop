@@ -10,9 +10,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.stream.Collectors;
 
 public class TimetableModifier {
+    private static Logger logger = LogManager.getLogger();
     private List<Entry> entries;
 
     public TimetableModifier() {
@@ -41,7 +47,7 @@ public class TimetableModifier {
         try {
             lines = Files.lines(path).collect(Collectors.toList());
         } catch (IOException ex) {
-            System.out.println("конч");//todo
+            logger.log(Level.ERROR, "Filename isn't correct!");
         }
         return lines;
     }
@@ -67,7 +73,9 @@ public class TimetableModifier {
                 entries.remove(i);
                 i--;
             }
+            i = 0;
         }
+        logger.log(Level.INFO, "Timetable is modified.");
     }
 
     public void write() {
@@ -83,9 +91,9 @@ public class TimetableModifier {
                 }
             }
         } catch (IOException e) {
-            System.out.println("конч2");
+            logger.log(Level.ERROR, "Filename isn't correct!");
         }
-
+        logger.log(Level.INFO, "Successfully writing data to file!");
     }
 
     public void run(String path) {

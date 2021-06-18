@@ -7,7 +7,6 @@ public class Main {
         TimetableModifier timetableModifier = new TimetableModifier();
         Scanner in = new Scanner(System.in);
         String path = in.next();
-        System.out.println("sdfg");
         timetableModifier.run(path);
     }
 }

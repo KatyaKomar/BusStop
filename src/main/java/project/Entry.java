@@ -40,7 +40,7 @@ public class Entry implements Comparable<Entry> {
                 return true;
             }
         } else {
-            if (arrivalTime.getHour() == 23 && departureTime.getHour() == 0) {
+            if (departureTime.getHour() == 23 && arrivalTime.getHour() == 0) {
                 if (arrivalTime.getMinute() <= departureTime.getMinute()) {
                     return true;
                 }
@@ -64,7 +64,7 @@ public class Entry implements Comparable<Entry> {
                 return -departureTime.compareTo(o.departureTime);
             }
             if (!busType.equals(o.busType)) {
-                if (busType == "Posh") {
+                if (busType.equals("Posh")) {
                     return -1;
                 } else {
                     return 1;

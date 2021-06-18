@@ -15,7 +15,7 @@ public class TimetableModifierTest {
 
     @Test(timeout = 1000)
     public void run() {
-        timetableModifier.run("input.txt");
+        timetableModifier.run("src\\test\\resources\\input.txt");
     }
 
     @After
